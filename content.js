@@ -45,4 +45,21 @@ function updateOverlay() {
 }
 
 // Initial update
-setInterval(updateOverlay, 100);
+// setInterval(updateOverlay, 100);
+
+const borders = document.querySelectorAll(".range-border.active-cell-border");
+
+const parent = borders[0].parentElement;
+
+const observer = new MutationObserver(() => {
+  updateOverlay();
+});
+
+observer.observe(parent, {
+  attributes: true,
+  attributeFilter: ["style"],
+  subtree: true,
+});
+
+updateOverlay();
+window.addEventListener("scroll", updateOverlay, true);
