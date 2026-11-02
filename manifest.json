@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Salya Crosshair",
+  "version": "1.0.0",
+  "description": "A crosshair overlay for Google Sheets",
+  "content_scripts": [
+    {
+      "matches": ["https://docs.google.com/spreadsheets/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
