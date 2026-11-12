@@ -1,6 +1,6 @@
 {
   "name": "salya-crosshair",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A browser extension that adds row, column, and active-cell crosshair highlighting to Google Sheets.",
   "main": "content.js",
   "scripts": {

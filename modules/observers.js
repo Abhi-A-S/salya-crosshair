@@ -3,11 +3,17 @@ import { updateOverlay } from "./overlays.js";
 
 let activeParent = null;
 let activeObserver = null;
+let activeResizeObserver = null;
 
 function disconnectActiveObserver() {
   if (activeObserver) {
     activeObserver.disconnect();
     activeObserver = null;
+  }
+
+  if (activeResizeObserver) {
+    activeResizeObserver.disconnect();
+    activeResizeObserver = null;
   }
 
   activeParent = null;
@@ -36,6 +42,14 @@ function observeActiveCell() {
   activeObserver.observe(activeParent, {
     attributes: true,
     attributeFilter: ["style"],
+  });
+
+  activeResizeObserver = new ResizeObserver(() => {
+    updateOverlay();
+  });
+
+  borders.forEach((border) => {
+    activeResizeObserver.observe(border);
   });
 
   updateOverlay();
